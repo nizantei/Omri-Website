@@ -119,7 +119,7 @@ const SETTINGS = {
   form: {
     // Google Apps Script Web App URL (set after deploying script)
     // See DOCUMENTATION.md for setup instructions
-    submissionEndpoint: "",
+    submissionEndpoint: "https://script.google.com/macros/s/AKfycbxAJU-LkPUoQS7ydJma7X4mEbjksr6kpEGh7pit9TslIwO3kYmUj-HsCl3zZZtwgq2cFw/exec",
 
     // Fields to collect (true = show, false = hide)
     fields: {
