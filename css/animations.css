@@ -1,0 +1,205 @@
+/* ============================================
+   ANIMATIONS & TRANSITIONS
+   Scroll-triggered and entrance animations
+   ============================================ */
+
+/* ── Base: Hidden before animation triggers ── */
+.anim-fade-up,
+.anim-fade-down,
+.anim-fade-left,
+.anim-fade-right,
+.anim-scale-in,
+.anim-blur-in {
+  opacity: 0;
+  transition-property: opacity, transform, filter;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.anim-fade-up {
+  transform: translateY(40px);
+}
+
+.anim-fade-down {
+  transform: translateY(-40px);
+}
+
+.anim-fade-left {
+  transform: translateX(40px);
+}
+
+.anim-fade-right {
+  transform: translateX(-40px);
+}
+
+.anim-scale-in {
+  transform: scale(0.9);
+}
+
+.anim-blur-in {
+  filter: blur(10px);
+  transform: translateY(20px);
+}
+
+/* ── Visible: When scrolled into view ──────── */
+.anim-fade-up.visible,
+.anim-fade-down.visible,
+.anim-fade-left.visible,
+.anim-fade-right.visible,
+.anim-scale-in.visible,
+.anim-blur-in.visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* ── Stagger Delays ───────────────────────── */
+.anim-delay-1 { transition-delay: 0.15s; }
+.anim-delay-2 { transition-delay: 0.3s; }
+.anim-delay-3 { transition-delay: 0.45s; }
+.anim-delay-4 { transition-delay: 0.6s; }
+.anim-delay-5 { transition-delay: 0.75s; }
+
+/* ── Typing Animation (Hero headline) ──────── */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 0.7s step-end infinite;
+  color: var(--primary-blue);
+  font-weight: 100;
+  margin-inline-start: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Counter Animation (Achievements) ──────── */
+.counter-animate {
+  display: inline-block;
+}
+
+/* ── Gradient Shine Effect ─────────────────── */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50%, 100% { left: 150%; }
+}
+
+/* ── Float animation (scroll indicator) ────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ── Pulse (CTA button subtle) ─────────────── */
+.btn-hero {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 6px 25px rgba(200, 16, 46, 0.4);
+  }
+  50% {
+    box-shadow: 0 6px 35px rgba(200, 16, 46, 0.65);
+  }
+}
+
+/* ── Form field focus glow ─────────────────── */
+.form-field input:focus {
+  box-shadow: 0 0 0 4px rgba(44, 95, 138, 0.15);
+}
+
+/* ── Achievement card hover effect ─────────── */
+.achievement-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Social card hover icon rotate ─────────── */
+.social-card:hover .social-card-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* ── Section title underline grow ──────────── */
+.section-title.visible::after {
+  animation: growLine 0.6s ease 0.3s forwards;
+  width: 0;
+}
+
+@keyframes growLine {
+  to { width: 60px; }
+}
+
+/* ── Image reveal ──────────────────────────── */
+.about-image-wrapper.visible,
+.partner-wrapper.visible {
+  animation: imageReveal 0.8s ease forwards;
+}
+
+@keyframes imageReveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ── Reduce motion preference ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up,
+  .anim-fade-down,
+  .anim-fade-left,
+  .anim-fade-right,
+  .anim-scale-in,
+  .anim-blur-in {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .btn-hero {
+    animation: none;
+  }
+
+  .scroll-arrow {
+    animation: none;
+  }
+
+  .shine-effect::after {
+    animation: none;
+  }
+
+  .section-title.visible::after {
+    animation: none;
+    width: 60px;
+  }
+}
