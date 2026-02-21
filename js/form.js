@@ -53,9 +53,10 @@
       name:          form.querySelector('[name="name"]')?.value?.trim() || '',
       email:         form.querySelector('[name="email"]')?.value?.trim() || '',
       phone:         form.querySelector('[name="phone"]')?.value?.trim() || '',
-      hostMeetings:  form.querySelector('[name="hostMeetings"]')?.checked || false,
-      volunteer:     form.querySelector('[name="volunteer"]')?.checked || false,
-      joinUpdates:   form.querySelector('[name="joinUpdates"]')?.checked || false,
+      city:          form.querySelector('[name="city"]')?.value?.trim() || '',
+      hostMeetings:     form.querySelector('[name="hostMeetings"]')?.checked || false,
+      volunteer:        form.querySelector('[name="volunteer"]')?.checked || false,
+      receiveUpdates:   form.querySelector('[name="receiveUpdates"]')?.checked || false,
       timestamp:     new Date().toISOString(),
       source:        window.location.href,
       language:      lang,
@@ -79,10 +80,9 @@
         storeLocally(formData);
       }
 
-      // Success
-      showMessage(messageEl, 'success',
-        CONTENT.joinForm[lang].successMessage);
+      // Success — show thank-you popup
       form.reset();
+      showThankYouPopup();
 
     } catch (error) {
       console.error('Form submission error:', error);
@@ -190,6 +190,37 @@
     setTimeout(() => {
       el.style.display = 'none';
     }, 5000);
+  }
+
+  // ── Thank-You Popup ──────────────────────
+  function showThankYouPopup() {
+    const popup = document.getElementById('thankYouPopup');
+    if (!popup) return;
+
+    // Set button links
+    const whatsappBtn = document.getElementById('popupWhatsapp');
+    const registerBtn = document.getElementById('popupRegister');
+    if (whatsappBtn) whatsappBtn.href = SETTINGS.social.whatsapp || '#';
+    if (registerBtn) registerBtn.href = SETTINGS.form.partyRegistrationUrl || '#';
+
+    popup.classList.add('active');
+    popup.setAttribute('aria-hidden', 'false');
+
+    // Close handlers
+    const closeBtn = document.getElementById('popupClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closePopup);
+    }
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) closePopup();
+    });
+  }
+
+  function closePopup() {
+    const popup = document.getElementById('thankYouPopup');
+    if (!popup) return;
+    popup.classList.remove('active');
+    popup.setAttribute('aria-hidden', 'true');
   }
 
   // ── Export pending leads (for future DB sync) ──

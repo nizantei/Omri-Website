@@ -13,8 +13,8 @@ const CONTENT = {
   // ── Header / Navigation ──────────────────
   header: {
     he: {
-      partyName: "המפתחים",
-      candidateName: "ניצן טייכהולץ",
+      partyName: "הדמוקרטים",
+      candidateName: "עמרי רונן",
       ctaButton: "הצטרפו אליי",
       navLinks: [
         { label: "ראשי", href: "#hero" },
@@ -24,8 +24,8 @@ const CONTENT = {
       ]
     },
     en: {
-      partyName: "The Developers",
-      candidateName: "Nitsan Teichholtz",
+      partyName: "The Democrats",
+      candidateName: "Omri Ronen",
       ctaButton: "Join Me",
       navLinks: [
         { label: "Home", href: "#hero" },
@@ -39,12 +39,12 @@ const CONTENT = {
   // ── Hero Section ─────────────────────────
   hero: {
     he: {
-      headline: "ניצן טייכהולץ",
-      subheadline: "שינוי חברתי דרך פיתוח תוכנה"
+      headline: "עמרי רונן",
+      subheadline: "בונים מחדש"
     },
     en: {
-      headline: "Nitsan Teichholtz",
-      subheadline: "Social change through software development"
+      headline: "Omri Ronen",
+      subheadline: "Building Anew"
     }
   },
 
@@ -74,41 +74,55 @@ const CONTENT = {
       title: "הצטרפו אליי",
       subtitle: "השאירו פרטים ונהיה בקשר",
       fields: {
-        name: "שם",
+        name: "שם מלא",
         email: "אמייל",
-        phone: "מספר טלפון"
+        phone: "מספר טלפון",
+        city: "מקום מגורים"
       },
       howCanIHelp: "איך אני יכול לעזור?",
       checkboxes: {
-        hostMeetings: "אני יכול לארח חוגי בית",
-        volunteer: "אני רוצה להתנדב",
-        joinUpdates: "אני רוצה להצטרף לקבוצת העדכונים"
+        hostMeetings: "אני רוצה לארח חוגי בית",
+        volunteer: "אני רוצה להתנדב"
       },
-      privacyText: "אני מסכים/ה לקבל עדכונים בהתאם ל",
+      privacyText: "אני מאשר/ת את איסוף ושימוש במידע שלי בהתאם ל",
       privacyLink: "מדיניות הפרטיות",
+      receiveUpdatesText: "אני מאשר/ת לקבל עדכונים, חדשות ומידע על הקמפיין באימייל ו/או SMS",
       submitButton: "הצטרפו",
       successMessage: "תודה! פרטיכם נשמרו בהצלחה.",
-      errorMessage: "אירעה שגיאה. אנא נסו שוב."
+      errorMessage: "אירעה שגיאה. אנא נסו שוב.",
+      popup: {
+        title: "!תודה שהצטרפתם",
+        text: "הפרטים שלכם נשמרו בהצלחה. מוזמנים להצטרף לקבוצת הוואטסאפ שלנו ולהירשם למפלגה",
+        whatsappButton: "הצטרפו לוואטסאפ",
+        registerButton: "התפקדות לדמוקרטים"
+      }
     },
     en: {
       title: "Join Me",
       subtitle: "Leave your details and we'll stay in touch",
       fields: {
-        name: "Name",
+        name: "Full Name",
         email: "Email",
-        phone: "Phone Number"
+        phone: "Phone Number",
+        city: "City"
       },
       howCanIHelp: "How can I help?",
       checkboxes: {
-        hostMeetings: "I can host house meetings",
-        volunteer: "I want to volunteer",
-        joinUpdates: "I want to join the updates group"
+        hostMeetings: "I'd like to host house meetings",
+        volunteer: "I want to volunteer"
       },
-      privacyText: "I agree to receive updates per the",
+      privacyText: "I agree to the collection and use of my information per the",
       privacyLink: "Privacy Policy",
+      receiveUpdatesText: "I agree to receive updates, news, and campaign information via email and/or SMS",
       submitButton: "Join",
       successMessage: "Thank you! Your details were saved successfully.",
-      errorMessage: "An error occurred. Please try again."
+      errorMessage: "An error occurred. Please try again.",
+      popup: {
+        title: "Thank You!",
+        text: "Your details were saved successfully. Join our WhatsApp group and register for the party",
+        whatsappButton: "Join WhatsApp",
+        registerButton: "Register to Party"
+      }
     }
   },
 
@@ -170,12 +184,12 @@ const CONTENT = {
   footer: {
     he: {
       copyright: "© כל הזכויות שמורות",
-      designCredit: "עיצוב: שם המעצב",
+      designCredit: "עיצוב: ניצן כרוב טייכהולץ",
       photoCredit: "צילום: שם הצלם"
     },
     en: {
       copyright: "© All Rights Reserved",
-      designCredit: "Design: Designer Name",
+      designCredit: "Design: Nitsan Kruv Teichholtz",
       photoCredit: "Photography: Photographer Name"
     }
   },

@@ -258,8 +258,9 @@ html[dir="ltr"] .section-title {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.4rem, 1.5vw, 1rem);
   z-index: 1001;
+  min-width: 0;
 }
 
 /* Logo */
@@ -285,12 +286,13 @@ html[dir="ltr"] .section-title {
 .header-identity {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  min-width: 0;
 }
 
 .candidate-name {
   font-family: var(--font-secondary);
-  font-size: 1.6rem;
+  font-size: clamp(0.9rem, 3.5vw, 1.6rem);
   font-weight: 900;
   color: var(--primary-blue);
   line-height: 1.2;
@@ -394,8 +396,9 @@ html[dir="ltr"] .nav-list a::after {
 
 /* Header CTA */
 .header-cta {
-  font-size: 0.95rem;
-  padding: 0.6rem 1.5rem;
+  font-size: clamp(0.7rem, 2vw, 0.95rem);
+  padding: 0.6rem clamp(0.6rem, 2.5vw, 1.5rem);
+  flex-shrink: 0;
 }
 
 /* ============================================
@@ -497,13 +500,16 @@ html[dir="ltr"] .hero-headline {
    ============================================ */
 .join-section {
   background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-red) 100%);
+  padding-left: clamp(0.5rem, 2vw, 2rem);
+  padding-right: clamp(0.5rem, 2vw, 2rem);
 }
 
 .form-wrapper {
-  max-width: 700px;
+  width: 90%;
+  max-width: 900px;
   margin: 0 auto;
   background: var(--white);
-  padding: 3rem;
+  padding: clamp(1.25rem, 4vw, 3rem);
   border-radius: var(--border-radius);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
@@ -512,6 +518,45 @@ html[dir="ltr"] .hero-headline {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
+}
+
+/* City Autocomplete Dropdown */
+.city-autocomplete-wrapper {
+  position: relative;
+}
+
+.city-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border: 2px solid var(--royal-blue);
+  border-top: none;
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.city-dropdown.open {
+  display: block;
+}
+
+.city-option {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background var(--transition-fast);
+}
+
+.city-option:hover,
+.city-option.active {
+  background: var(--light-blue);
+  color: var(--royal-blue);
+  font-weight: 600;
 }
 
 /* Floating Label Input */
@@ -606,9 +651,12 @@ html[dir="ltr"] .form-checkboxes-title {
   font-family: var(--font-english);
 }
 
-/* Privacy Checkbox */
-.form-privacy {
+/* Consent Checkboxes (Privacy + Updates) */
+.form-consent {
   margin: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .checkbox-label {
@@ -705,6 +753,150 @@ html[dir="ltr"] .form-checkboxes-title {
   display: block;
   background: var(--light-red);
   color: var(--deep-red);
+}
+
+/* ============================================
+   THANK-YOU POPUP
+   ============================================ */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-overlay.active {
+  display: flex;
+}
+
+.popup-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 2.5rem 2rem;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: popupSlideIn 0.3s ease;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  color: var(--gray-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--transition-fast);
+}
+
+html[dir="ltr"] .popup-close {
+  right: 0.75rem;
+  left: auto;
+}
+
+.popup-close:hover {
+  background: var(--off-white);
+}
+
+.popup-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.popup-title {
+  font-family: var(--font-secondary);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--primary-blue);
+  margin-bottom: 0.75rem;
+}
+
+html[dir="ltr"] .popup-title {
+  font-family: var(--font-english);
+}
+
+.popup-text {
+  font-size: 1rem;
+  color: var(--gray-text);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.popup-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.popup-btn:hover {
+  transform: translateY(-2px);
+}
+
+.popup-btn-whatsapp {
+  background: #25D366;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+}
+
+.popup-btn-whatsapp:hover {
+  background: #20bd5a;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+.popup-btn-register {
+  background: var(--royal-blue);
+  box-shadow: 0 4px 15px rgba(44, 95, 138, 0.35);
+}
+
+.popup-btn-register:hover {
+  background: var(--bright-blue);
+  box-shadow: 0 6px 20px rgba(44, 95, 138, 0.5);
 }
 
 /* ============================================
@@ -1241,13 +1433,8 @@ body.a11y-pause-animations *::after {
     display: none;
   }
 
-  .candidate-name {
-    font-size: 1.2rem;
-  }
-
-  .header-cta {
-    font-size: 0.8rem;
-    padding: 0.45rem 1rem;
+  .header-container {
+    padding: 0 1rem;
   }
 
   .logo-img {
@@ -1291,7 +1478,7 @@ body.a11y-pause-animations *::after {
   }
 
   .form-wrapper {
-    padding: 2rem 1.25rem;
+    width: 95%;
   }
 
   .form-grid {
@@ -1334,22 +1521,13 @@ body.a11y-pause-animations *::after {
    RESPONSIVE – SMALL MOBILE (max 480px)
    ============================================ */
 @media (max-width: 480px) {
-  .header-identity {
-    gap: 0.75rem;
-  }
-
-  .candidate-name {
-    font-size: 1rem;
-  }
-
-  .header-cta {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.75rem;
+  .header-container {
+    padding: 0 0.75rem;
   }
 
   .logo-img {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
   .hero-headline {

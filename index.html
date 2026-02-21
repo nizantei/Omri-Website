@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">שם המועמד — תנועה פוליטית</title>
-  <meta name="description" id="metaDescription" content="">
+  <title id="pageTitle">עמרי רונן — בונים מחדש</title>
+  <meta name="description" id="metaDescription" content="הצטרפו לעמרי רונן לקידום חזון מדיני ותיקון חברתי">
+  <meta property="og:title" content="עמרי רונן — בונים מחדש">
+  <meta property="og:description" content="הצטרפו לעמרי רונן לקידום חזון מדיני ותיקון חברתי">
   <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:type" content="website">
   <link rel="icon" href="images/favicon.ico">
 
   <!-- Google Fonts -->
@@ -102,6 +105,12 @@
                 <label data-i18n="joinForm.fields.phone"></label>
                 <span class="field-error"></span>
               </div>
+              <div class="form-field city-autocomplete-wrapper" data-field="city">
+                <input type="text" name="city" class="city-autocomplete-input" autocomplete="off">
+                <label data-i18n="joinForm.fields.city"></label>
+                <span class="field-error"></span>
+                <div class="city-dropdown"></div>
+              </div>
             </div>
             <div class="form-checkboxes">
               <h4 class="form-checkboxes-title" data-i18n="joinForm.howCanIHelp"></h4>
@@ -115,19 +124,19 @@
                 <span class="checkbox-custom"></span>
                 <span data-i18n="joinForm.checkboxes.volunteer"></span>
               </label>
-              <label class="checkbox-label">
-                <input type="checkbox" name="joinUpdates">
-                <span class="checkbox-custom"></span>
-                <span data-i18n="joinForm.checkboxes.joinUpdates"></span>
-              </label>
             </div>
-            <div class="form-privacy">
+            <div class="form-consent">
+              <label class="checkbox-label">
+                <input type="checkbox" name="receiveUpdates">
+                <span class="checkbox-custom"></span>
+                <span data-i18n="joinForm.receiveUpdatesText"></span>
+              </label>
               <label class="checkbox-label">
                 <input type="checkbox" name="privacy" required>
                 <span class="checkbox-custom"></span>
                 <span>
                   <span data-i18n="joinForm.privacyText"></span>
-                  <a href="#privacy" class="privacy-link" data-i18n="joinForm.privacyLink"></a>
+                  <a href="privacy-policy.html" class="privacy-link" target="_blank" data-i18n="joinForm.privacyLink"></a>
                 </span>
               </label>
             </div>
@@ -204,6 +213,12 @@
                   <label data-i18n="joinForm.fields.phone"></label>
                   <span class="field-error"></span>
                 </div>
+                <div class="form-field city-autocomplete-wrapper" data-field="city">
+                  <input type="text" name="city" class="city-autocomplete-input" autocomplete="off">
+                  <label data-i18n="joinForm.fields.city"></label>
+                  <span class="field-error"></span>
+                  <div class="city-dropdown"></div>
+                </div>
               </div>
               <div class="form-checkboxes">
                 <h4 class="form-checkboxes-title" data-i18n="joinForm.howCanIHelp"></h4>
@@ -217,19 +232,19 @@
                   <span class="checkbox-custom"></span>
                   <span data-i18n="joinForm.checkboxes.volunteer"></span>
                 </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" name="joinUpdates">
-                  <span class="checkbox-custom"></span>
-                  <span data-i18n="joinForm.checkboxes.joinUpdates"></span>
-                </label>
               </div>
-              <div class="form-privacy">
+              <div class="form-consent">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="receiveUpdates">
+                  <span class="checkbox-custom"></span>
+                  <span data-i18n="joinForm.receiveUpdatesText"></span>
+                </label>
                 <label class="checkbox-label">
                   <input type="checkbox" name="privacy" required>
                   <span class="checkbox-custom"></span>
                   <span>
                     <span data-i18n="joinForm.privacyText"></span>
-                    <a href="#privacy" class="privacy-link" data-i18n="joinForm.privacyLink"></a>
+                    <a href="privacy-policy.html" class="privacy-link" target="_blank" data-i18n="joinForm.privacyLink"></a>
                   </span>
                 </label>
               </div>
@@ -245,6 +260,24 @@
     </section>
 
   </main>
+
+  <!-- ====== THANK YOU POPUP ====== -->
+  <div class="popup-overlay" id="thankYouPopup" aria-hidden="true">
+    <div class="popup-card">
+      <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
+      <div class="popup-icon">&#10003;</div>
+      <h3 class="popup-title" data-i18n="joinForm.popup.title"></h3>
+      <p class="popup-text" data-i18n="joinForm.popup.text"></p>
+      <div class="popup-buttons">
+        <a href="#" class="popup-btn popup-btn-whatsapp" id="popupWhatsapp" target="_blank" rel="noopener">
+          <span data-i18n="joinForm.popup.whatsappButton"></span>
+        </a>
+        <a href="#" class="popup-btn popup-btn-register" id="popupRegister" target="_blank" rel="noopener">
+          <span data-i18n="joinForm.popup.registerButton"></span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ====== FOOTER ====== -->
   <footer class="site-footer" id="siteFooter">
@@ -340,6 +373,7 @@
   <script src="js/app.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/form.js"></script>
+  <script src="js/city-autocomplete.js"></script>
 
 </body>
 </html>
