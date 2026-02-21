@@ -31,9 +31,9 @@ const SETTINGS = {
   fonts: {
     // Google Fonts loaded in index.html
     primary: "'Heebo', 'Segoe UI', sans-serif",  // Hebrew-friendly
-    secondary: "'Frank Ruhl Libre', serif",          // Headings
-    english: "'Inter', 'Segoe UI', sans-serif",    // English text
-    readable: "'Arial', sans-serif",                 // Accessibility fallback
+    secondary: "'Heebo', serif",          // Headings
+    english: "'Heebo', 'Segoe UI', sans-serif",    // English text
+    readable: "'Heebo', sans-serif",                 // Accessibility fallback
   },
 
   // ── Font Sizes (in rem) ──────────────────
@@ -59,7 +59,7 @@ const SETTINGS = {
     headerHeight: "80",    // Header height in px
     heroMinHeight: "90",    // Hero section min-height in vh
     heroHeadlineGap: "1",   // Space below the headline (rem)
-    heroSubheadlineGap: "-2", // Space below the subheadline (rem)
+    heroSubheadlineGap: "0", // Space below the subheadline (rem)
     heroColumnGap: "2",     // Space between text and image columns (rem)
     cardPadding: "2",
     formGap: "1",
@@ -70,8 +70,8 @@ const SETTINGS = {
   //    Replace paths with your actual images
   images: {
     logo: "images/Logo.png",
-    heroDesktop: "images/Omri_Hero.jpeg",
-    heroMobile: "images/Omri_Hero.jpeg",
+    heroDesktop: "images/Omri_Hero.png",
+    heroMobile: "images/Omri_Hero.png",
     about: "images/Nitsan_Event.png",
     partner: "images/Nitsan With Leader.png",
     favicon: "images/favicon.ico",
@@ -106,11 +106,11 @@ const SETTINGS = {
   // ── Social Media Links ───────────────────
   //    Set to "" (empty string) to hide a link
   social: {
-    facebook: "https://facebook.com/your-page",
-    instagram: "https://instagram.com/your-profile",
-    twitter: "https://x.com/your-handle",
-    tiktok: "https://tiktok.com/@your-handle",
-    whatsapp: "https://chat.whatsapp.com/your-group-link",
+    facebook: "https://www.facebook.com/omri.ronen.77",
+    instagram: "https://www.instagram.com/omrironenn/",
+    twitter: "https://x.com/omrironen24",
+    tiktok: "https://www.tiktok.com/@omri.ronen",
+    whatsapp: "https://chat.whatsapp.com/D4oyjjwzNs05S8IvWxZqhP?mode=gi_t",
     youtube: "",
     telegram: "",
   },
@@ -130,7 +130,10 @@ const SETTINGS = {
 
     // Require privacy consent checkbox
     requirePrivacy: true,
-    privacyPolicyUrl: "#privacy",
+    privacyPolicyUrl: "privacy-policy.html",
+
+    // Party registration URL (shown in thank-you popup)
+    partyRegistrationUrl: "https://p.democrats.org.il/Cw7gd",
   },
 
   // ── Animations ───────────────────────────
@@ -146,11 +149,11 @@ const SETTINGS = {
   // ── SEO / Meta ───────────────────────────
   meta: {
     he: {
-      title: "שם המועמד — תנועה פוליטית",
+      title: "עמרי רונן - בונים מחדש",
       description: "הצטרפו למועמד לקידום חזון מדיני ותיקון חברתי",
     },
     en: {
-      title: "Candidate Name — Political Movement",
+      title: "Omri Ronen - Building Anew",
       description: "Join the candidate for political vision and social change",
     }
   },
