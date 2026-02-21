@@ -110,7 +110,7 @@ const SETTINGS = {
     instagram: "https://www.instagram.com/omrironenn/",
     twitter: "https://x.com/omrironen24",
     tiktok: "https://www.tiktok.com/@omri.ronen",
-    whatsapp: "https://chat.whatsapp.com/D4oyjjwzNs05S8IvWxZqhP?mode=gi_t",
+    whatsapp: "https://chat.whatsapp.com/J2Okv9csj9tGB0HGP5tT4M?mode=gi_t",
     youtube: "",
     telegram: "",
   },
